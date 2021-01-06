@@ -16,14 +16,12 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Python script that searches a grid of random generated letters for valid words")
     parser.add_argument("--size", "-s", help="Set the board size", required=True)
-    parser.add_argument("--file", "-f", help="Path to file contains list of words", default="valid_words.txt")
+    parser.add_argument("--file", "-f", help="Path to file contains list of words", required=True)
     args = parser.parse_args()
-    board_size = int(args.size)
-    file_path = args.file
     parser.parse_args()
     # instantiate Solution class
-    solution = Solution(board_size)
-    valid_words = read_words_from_file(file_path)
+    solution = Solution(int(args.size))
+    valid_words = read_words_from_file(args.file)
 
     # Printing the generated Board
     for x in solution.initial_board:
